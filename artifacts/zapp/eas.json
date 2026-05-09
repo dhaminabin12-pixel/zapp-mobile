@@ -14,9 +14,7 @@
       "android": {
         "buildType": "app-bundle"
       },
-      "env": {
-        "PNPM_FLAGS": "--no-frozen-lockfile"
-      }
+      "config": "app.json"
     }
   },
   "submit": {
