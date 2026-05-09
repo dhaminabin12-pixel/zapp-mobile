@@ -1,0 +1,8 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "Z1GpKT08G_eqlnXt9BVFF"
+uri = "file://artifacts/zapp/assets/images/icon.png"
+type = "image"
+title = "zapp lightning bolt icon"

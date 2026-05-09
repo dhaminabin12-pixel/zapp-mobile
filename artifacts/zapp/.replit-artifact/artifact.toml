@@ -1,0 +1,27 @@
+kind = "mobile"
+previewPath = "/"
+title = "ZAPP!"
+version = "1.0.0"
+id = "artifacts/zapp"
+router = "expo-domain"
+
+[[integratedSkills]]
+name = "expo"
+version = "1.0.0"
+
+[[services]]
+ensurePreviewReachable = "/status"
+name = "expo"
+paths = [ "/" ]
+localPort = 25013
+
+[services.development]
+run = "pnpm --filter @workspace/zapp run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/zapp", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/zapp", "run", "serve" ]
+
+[services.env]
+PORT = "25013"
+BASE_PATH = "/"

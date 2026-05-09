@@ -1,45 +1,56 @@
-# [Project name]
+# ZAPP!
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+An ADHD-friendly task manager mobile app that helps users track tasks by urgency, build momentum with timers and mini-steps, and understand their brain patterns through a self-assessment.
 
 ## Run & Operate
 
+- `pnpm --filter @workspace/zapp run dev` — run the Expo app (accessed via $REPLIT_EXPO_DEV_DOMAIN)
 - `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
 - `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
 
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+- Mobile: Expo (React Native) with Expo Router
+- State: React Context + AsyncStorage (no backend needed)
+- UI: StyleSheet, expo-linear-gradient, expo-haptics, expo-blur
+- Navigation: expo-router (file-based), tabs + stack
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
-
-## Architecture decisions
-
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- `artifacts/zapp/` — Expo mobile app
+- `artifacts/zapp/app/(tabs)/index.tsx` — Main task list screen
+- `artifacts/zapp/app/(tabs)/patterns.tsx` — Brain map / ADHD patterns screen
+- `artifacts/zapp/app/task/[id].tsx` — Task detail (timer, mini-steps, notes)
+- `artifacts/zapp/app/assessment.tsx` — 7-category ADHD self-assessment
+- `artifacts/zapp/context/TaskContext.tsx` — All task state + AsyncStorage persistence
+- `artifacts/zapp/components/TaskCard.tsx` — TaskCard + UrgencyBadge components
+- `artifacts/zapp/constants/colors.ts` — Design tokens (warm cream + hot pink palette)
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Task list with 4 urgency levels: NOW 🔥 / SOON ⏰ / LATER 🌙 / BRAIN DUMP 🧠
+- Per-task detail view with a Pomodoro-style timer (2/5/15/25 min presets)
+- Mini-steps (subtasks) to break overwhelming tasks into tiny pieces
+- "Just Start" prompt with "2-minute rule" messaging
+- XP gamification system (+10 start, +5 subtask, +25 complete)
+- 7-category ADHD self-assessment (Task Initiation, Time Blindness, Impulsivity, Emotional Regulation, Organisation, Consistency, Motivation)
+- Brain Map showing assessment results with personalized strategies
+- Unicorn mascot with rotating motivational messages
+- Seeded with 10 example tasks on first launch
+
+## Architecture decisions
+
+- Frontend-only: all data stored in AsyncStorage, no backend needed
+- Urgency-first model instead of priority numbers — maps to ADHD time perception
+- Source code ported from user's existing Zapp app (attached_assets/zapp-mobile-source_*.zip)
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- App name: ZAPP!
+- Source: user provided existing mobile source code
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
-
-## Pointers
-
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+- Use `restart_workflow` not `npx expo start` to restart the dev server
+- The `useNativeDriver` warning on web is harmless — only affects the slide-up modal animation on web
