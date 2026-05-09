@@ -39,8 +39,9 @@
     },
     "extra": {
       "eas": {
-        "projectId": "53985d8e-dbb1-4f48-8d71-58aed9474ba1"
+        "projectId": "3d5f5ffc-5292-49ea-a785-c6db1a9a3aa9"
       }
-    }
+    },
+    "owner": "nabindhami"
   }
 }
