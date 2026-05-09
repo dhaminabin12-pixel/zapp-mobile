@@ -8,7 +8,7 @@
     "build": "node scripts/build.js",
     "serve": "node server/serve.js",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "eas-build-pre-install": "echo skip",
+    "eas-build-pre-install": "echo done",
     "eas-build-on-success": "echo done"
   },
   "devDependencies": {
@@ -56,5 +56,6 @@
     "typescript": "~5.9.2",
     "zod": "catalog:",
     "zod-validation-error": "^3.4.0"
-  }
+  },
+  "packageManager": "pnpm@10.26.1"
 }
